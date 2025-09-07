@@ -52,7 +52,6 @@ def main():
 [21] host
 [22] dnsutils
 [23] coreutils
-[00] termux-setup-storage (for storage access)
 ''')
 
     choice = input("\033[93mDo you want to install all packages [y/n] : ").strip().lower()
@@ -72,10 +71,6 @@ def main():
         os.system("pkg install " + " ".join(packages) + " -y")
 
         print("\n\033[92mAll packages installed successfully!\n")
-
-        # Setup Termux storage
-        input("Press Enter to set up Termux storage (if needed)...")
-        os.system("termux-setup-storage")
 
         # Welcome message
         print("\033[95m+-------------------------------------------------+")

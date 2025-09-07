@@ -20,7 +20,7 @@ print(''' \033[95m
 +--------------------------------------+
 | This Tool Installs Basic Packages    |
 +--------------------------------------+
-| Coded By hatanhack | version : 2.0  |
+| Coded By hatanhack | version : 2.0   |
 +--------------------------------------+''')
 
 slowprint(''' \033[93m
@@ -35,6 +35,51 @@ slowprint(''' \033[93m
 [09] bash
 [10] nano
 [11] curl
+[12] openssl
+[13] openssh
+[14] wget
+[15] clang
+[16] nmap
+[17] w3m
+[18] hydra
+[19] ruby
+[20] macchanger
+[21] host
+[22] dnsutils
+[23] coreutils
+[00] termux-setup-storage (for storage access)
+''')
+
+choice = input("\033[93mDo You Want to Install All Packages [y/n] : ").strip().lower()
+if choice == 'n':
+    sys.exit("\n\033[91mExiting...")
+
+if choice == 'y':
+    # تحديث الحزم
+    os.system("pkg update -y && pkg upgrade -y")
+
+    # تثبيت الحزم
+    packages = [
+        "python", "python2", "python-dev", "python3", "php", "java", "git",
+        "perl", "bash", "nano", "curl", "openssl", "openssh", "wget", "clang",
+        "nmap", "w3m", "hydra", "ruby", "macchanger", "host", "dnsutils", "coreutils"
+    ]
+    os.system("pkg install " + " ".join(packages) + " -y")
+
+    print("\n\033[92mAll packages installed successfully!\n")
+
+    # تفعيل الوصول للذاكرة
+    input("Press Enter to set up Termux storage (if needed)...")
+    os.system("termux-setup-storage")
+
+    # رسالة ترحيب
+    print("\033[95m+-------------------------------------------------+")
+    slowprint('''\033[95m|             Welcome To HATAN BASIC              |
+|         All Basic Packages Installed ✔️          |
+|            Your System Is Ready To Use           |''')
+    print("+-------------------------------------------------+")
+
+input("\n\nPress the enter key to exit : ")[11] curl
 [12] openssl
 [13] openssh
 [14] wget

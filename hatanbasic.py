@@ -58,11 +58,44 @@ if choice == 'n':
     sys.exit("\n\033[91mExiting...")
 
 if choice == 'y':
+    # تحديث الحزم
     os.system("pkg update -y && pkg upgrade -y")
-    os.system("pkg install python python2 python-dev python3 php java git perl bash nano curl openssl openssh wget clang nmap w3m hydra ruby macchanger host dnsutils coreutils -y")
+
+    # تثبيت الحزم
+    packages = [
+        "python", "python2", "python-dev", "python3", "php", "java", "git",
+        "perl", "bash", "nano", "curl", "openssl", "openssh", "wget", "clang",
+        "nmap", "w3m", "hydra", "ruby", "macchanger", "host", "dnsutils", "coreutils"
+    ]
+    os.system("pkg install " + " ".join(packages) + " -y")
 
     print("\n\033[92mAll packages installed successfully!\n")
     input("Press Enter to set up Termux storage (if needed)...")
+    os.system("termux-setup-storage")
+
+    print("\033[95m+-------------------------------------------------+")
+    slowprint('''\033[95m|             Welcome To Hackers World            |
+|                   hatanhack                      |
+|         Watch Our Tutorials To Learn Ethical     |
+|                     Hacking                      |''')
+    print("+-------------------------------------------------+")
+
+input("\n\033[93mPress Enter to exit : ")
+
+print ("""
+Subscribe VPP Hacker
+""")
+
+print("Allow the Button For Access the Storage in Termux")
+os.system("termux-setup-storage")
+
+print("\033[95m+-------------------------------------------------+")
+slowprint('''\033[95m|             Welcome To Hackers World            |
+|           Subscribe Our YouTube Channel          |
+|   Watch Our Tutorials To Learn Ethical Hacking   |''')
+print("+-------------------------------------------------+")
+
+input("\n\nPress the enter key to exit : ")    input("Press Enter to set up Termux storage (if needed)...")
     os.system("termux-setup-storage")
 
     print("\033[95m+-------------------------------------------------+")

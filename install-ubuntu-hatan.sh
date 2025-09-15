@@ -1,13 +1,16 @@
 #!/bin/bash
 # HATAN BASIC Auto Installer + Ubuntu Focal ARM64 for Termux
+# Updated by HATAN
 
-# Step 1: Update Termux
+# Step 1: Update Termux packages
+echo "[*] Updating Termux packages..."
 pkg update -y && pkg upgrade -y
 
 # Step 2: Install essential packages
+echo "[*] Installing essential packages..."
 pkg install -y git python python2 php ruby perl nano bash curl wget openssl openssh clang nmap w3m dnsutils net-tools coreutils openjdk-17 proot termux-api
 
-# Step 3: Clone termux-ubuntu if not exists
+# Step 3: Clone termux-ubuntu repository if it doesn't exist
 UBUNTU_DIR="$HOME/hatanbasic/termux-ubuntu"
 if [ -d "$UBUNTU_DIR" ]; then
     echo "[*] termux-ubuntu exists, skipping clone."
@@ -17,15 +20,17 @@ fi
 
 cd "$UBUNTU_DIR"
 
-# Step 4: Remove old Ubuntu if exists
+# Step 4: Remove any old Ubuntu images
 rm -rf ubuntu-fs ubuntu.tar.gz
 
-# Step 5: Download updated Ubuntu Focal ARM64
+# Step 5: Download Ubuntu Focal ARM64
 TARBALL="ubuntu.tar.gz"
+echo "[*] Downloading Ubuntu Focal ARM64..."
 wget -O "$TARBALL" "https://cloud-images.ubuntu.com/focal/current/ubuntu-20.04-server-cloudimg-arm64-root.tar.gz"
 
 # Step 6: Extract Ubuntu
 mkdir -p ubuntu-fs
+echo "[*] Extracting Ubuntu image..."
 proot --link2symlink tar -xf "$TARBALL" -C ubuntu-fs --exclude='dev'
 echo "nameserver 1.1.1.1" > ubuntu-fs/etc/resolv.conf
 
